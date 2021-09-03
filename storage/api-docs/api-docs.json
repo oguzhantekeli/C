@@ -1,0 +1,44 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "League API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/standings": {
+            "get": {
+                "summary": "get standings",
+                "operationId": "",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/fixture": {
+            "get": {
+                "summary": "get fixture",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "week",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

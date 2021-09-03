@@ -1,0 +1,48 @@
+.winner {
+    background-color: #58be71 !important;
+}
+
+.loser {
+    background-color: #e75a67 !important
+}
+
+.drawn {
+    background-color: #eec75d !important
+}
+.result-single{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.r-aligner{
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.l-aligner{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.result-button{
+    margin: 0 5%;
+}
+
+.hide-arrow::-webkit-outer-spin-button,
+.hide-arrow::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.hide-arrow[type=number] {
+    -moz-appearance: textfield;
+}
+
