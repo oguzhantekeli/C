@@ -16,9 +16,6 @@ use phpDocumentor\Reflection\Types\Integer;
 
 class ApiController extends Controller
 {
-    public function getFunction($function) {
-        return $this->$function();
-    }
 
     public function resetLeague() {
         Artisan::call('migrate:fresh --seed');
