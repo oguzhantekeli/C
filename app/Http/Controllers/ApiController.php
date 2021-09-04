@@ -19,7 +19,6 @@ class ApiController extends Controller
 
     public function resetLeague() {
         Artisan::call('migrate:fresh --seed');
-        $this->createFixture();
         return true;
     }
 
@@ -152,43 +151,6 @@ class ApiController extends Controller
 
         $results = Fixture::where('week', $latestWeek)->get();
         return $this->weekMatchsCalc($results);
-    }
-
-    public function createFixture() {
-        Fixture::truncate();
-        $teams = Team::all()->shuffle()->toArray();
-        $awayTeams = array_splice($teams, (count($teams) / 2));
-        $homeTeams = $teams;
-        for ($week = 1; $week < count($homeTeams) + count($awayTeams); $week++) {
-            for ($j = 0; $j < count($homeTeams); $j++) {
-                $fixture[$week][] = [
-                    'home_team_id' => $homeTeams[$j]['id'],
-                    'away_team_id' => $awayTeams[$j]['id'],
-                ];
-            }
-            if (count($homeTeams) + count($awayTeams) - 1 > 2) {
-                array_unshift($awayTeams, array_splice($homeTeams, 1, 1)[0]);
-                array_push($homeTeams, array_pop($awayTeams));
-            }
-        }
-
-        for ($i = 1; $i <= count($fixture); $i++) {
-            foreach ($fixture[$i] as $match) {
-                shuffle($match);
-                Fixture::create([
-                    'week' => $i,
-                    'home_team_id' => $match[0],
-                    'away_team_id' => $match[1],
-                ]);
-
-                Fixture::create([
-                    'week' => count($fixture) + $i,
-                    'home_team_id' => $match[1],
-                    'away_team_id' => $match[0],
-                ]);
-            }
-        }
-        return Fixture::all();
     }
 
     public function standingsCalc($teams) {
