@@ -30,7 +30,7 @@ class ApiController extends Controller
     }
 
     public function getFixture() {
-        $tempResults = Fixture::with('homeTeam', 'awayTeam')->orderBy('week')->get();
+        $tempResults = Fixture::with('homeTeam', 'awayTeam')->orderBy('week', 'ASC')->orderBy('id', 'ASC')->get();
         $result = [];
         foreach ($tempResults as $item) {
             $result[$item['week']][] = $item;
