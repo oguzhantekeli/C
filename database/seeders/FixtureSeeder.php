@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Fixture;
+use App\Models\Team;
+use Illuminate\Database\Seeder;
 
 class FixtureSeeder extends Seeder
 {
@@ -12,8 +13,7 @@ class FixtureSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         Fixture::truncate();
         $teams = Team::all()->shuffle()->toArray();
         $awayTeams = array_splice($teams, (count($teams) / 2));

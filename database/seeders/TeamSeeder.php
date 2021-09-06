@@ -12,8 +12,7 @@ class TeamSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         $teams = [
             [
                 'name' => 'Manchester United',
@@ -33,6 +32,7 @@ class TeamSeeder extends Seeder
             ],
         ];
 
+        shuffle($teams);
         foreach ($teams as $team) {
             $club = Team::create($team);
             $club->standing()->create();

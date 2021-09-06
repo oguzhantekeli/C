@@ -16,7 +16,6 @@ use phpDocumentor\Reflection\Types\Integer;
 
 class ApiController extends Controller
 {
-
     public function resetLeague() {
         Artisan::call('migrate:fresh --seed');
         return true;
@@ -30,7 +29,7 @@ class ApiController extends Controller
     }
 
     public function getFixture() {
-        $tempResults = Fixture::with('homeTeam', 'awayTeam')->get();
+        $tempResults = Fixture::with('homeTeam', 'awayTeam')->orderBy('week')->get();
         $result = [];
         foreach ($tempResults as $item) {
             $result[$item['week']][] = $item;
